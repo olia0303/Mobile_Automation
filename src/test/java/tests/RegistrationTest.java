@@ -1,7 +1,11 @@
 package tests;
+import module.DataUser;
 import org.testng.annotations.Test;
 import pages.HomePage;
 import pages.RegistrationPage;
+
+import static module.DataUser.*;
+
 public class RegistrationTest extends BaseTest {
     @Test(priority = 0)
     public void checkUserRegistrationValidEmailAndPasswordTest(){
@@ -9,8 +13,8 @@ public class RegistrationTest extends BaseTest {
        RegistrationPage registrationPage = new RegistrationPage(driver);
         homePage.goToHomePage()
                 .goToRegistrationPage()
-                .loginToUser("olka@mail.ru", "olka030389")
-                .verifyUser("Message with instructions was sent");
+                .loginToUser(LOGIN,PASSWORD)
+                .verifyUser(MESSAGE_WITH_INSTRUCTION);
 
     }
     @Test(priority = 1)
@@ -18,7 +22,7 @@ public class RegistrationTest extends BaseTest {
         HomePage homePage = new HomePage(driver);
         homePage.goToHomePage()
                 .goToRegistrationPage()
-                .loginToUser("olka030389@yandex.ru", "oli6630389")
-                .verifyUser("Error: User already exists");
+                .loginToUser(LOGIN,PASSWORD)
+                .verifyUser(MESSAGE_ERROR);
     }
 }

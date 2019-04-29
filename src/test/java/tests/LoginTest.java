@@ -4,6 +4,8 @@ import org.testng.annotations.Test;
 import pages.HomePage;
 import pages.LoginPage;
 
+import static module.DataUser.*;
+
 public class LoginTest extends BaseTest {
 
 
@@ -14,7 +16,7 @@ public class LoginTest extends BaseTest {
 
         homePage.goToHomePage()
                 .goToLoginPage()
-                .loginToUser("olka030389@yandex.ru", "oli6630389");
+                .loginToUser(LOGIN,PASSWORD);
 
     }
 
@@ -24,8 +26,8 @@ public class LoginTest extends BaseTest {
     LoginPage loginPage = new LoginPage(driver);
         homePage.goToHomePage()
                 .goToLoginPage()
-                .forgotPassword("olka030389@yandex.ru" )
-                .verifyPassword("Message with instructions was sent");
+                .forgotPassword(LOGIN )
+                .verifyPassword(MESSAGE_WITH_INSTRUCTION);
 
 }
 }
