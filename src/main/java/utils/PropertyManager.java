@@ -2,7 +2,6 @@
 package utils;
 
 //import lombok.extern.log4j.Log4j2;
-
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
@@ -29,7 +28,7 @@ public class PropertyManager {
         }
     }
 
-    public String get(String propertyName){
+    public String get(String propertyName) {
        // log.debug(String.format("Getting property by name %s. Value: %s", propertyName, prop.getProperty(propertyName)));
         return prop.getProperty(propertyName);
     }

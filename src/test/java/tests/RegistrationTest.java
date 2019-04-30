@@ -1,28 +1,24 @@
 package tests;
-import module.DataUser;
-import org.testng.annotations.Test;
-import pages.HomePage;
-import pages.RegistrationPage;
 
+import org.testng.annotations.Test;
 import static module.DataUser.*;
 
 public class RegistrationTest extends BaseTest {
-    @Test(priority = 0)
-    public void checkUserRegistrationValidEmailAndPasswordTest(){
-        HomePage homePage = new HomePage(driver);
-       RegistrationPage registrationPage = new RegistrationPage(driver);
+
+    @Test
+    public void checkUserRegistrationValidEmailAndPasswordTest() {
         homePage.goToHomePage()
                 .goToRegistrationPage()
-                .loginToUser(LOGIN,PASSWORD)
-                .verifyUser(MESSAGE_WITH_INSTRUCTION);
+                .addNewUser(LOGIN,PASSWORD)
+                .verifyMessageWithInstruction(MESSAGE_WITH_INSTRUCTION);
 
     }
-    @Test(priority = 1)
-    public void checkUserRegistrationWithExistingEmailTest(){
-        HomePage homePage = new HomePage(driver);
+
+    @Test
+    public void checkUserRegistrationWithExistingEmailTest() {
         homePage.goToHomePage()
                 .goToRegistrationPage()
-                .loginToUser(LOGIN,PASSWORD)
-                .verifyUser(MESSAGE_ERROR);
+                .addNewUser(LOGIN,PASSWORD)
+                .verifyMessage(MESSAGE_ERROR);
     }
 }

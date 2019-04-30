@@ -1,28 +1,23 @@
 package tests;
 
 import org.testng.annotations.Test;
-import pages.ChatPage;
-import pages.HomePage;
-
 import static module.DataUser.*;
 
 public class ChatTest extends BaseTest {
+
     @Test
-    public void checkRegisteredNewUserChatTest(){
-        HomePage homePage = new HomePage(driver);
-        ChatPage chatPage = new ChatPage(driver);
+    public void checkRegisteredNewUserChatTest() {
         homePage.goToHomePage()
                 .goToChatPage()
-                .addNewUserInChat(NAME,EMAIL)
-                .verifyIsRegisteredUser();
+                .addNewUserInChat(NAME, EMAIL)
+                .verifyIsRegisteredUser(EXPECTED_NAME);
     }
+
     @Test
-    public void checkSendingMessageByUserTest(){
-        HomePage homePage = new HomePage(driver);
-        ChatPage chatPage = new ChatPage(driver);
+    public void checkSendingMessageByUserTest() {
         homePage.goToHomePage()
                 .goToChatPage()
                 .sendingMessageByUser(TEXT)
-                .verifySendMessage(LAST_MESSAGE,TEXT);
+                .verifySendMessage();
     }
 }

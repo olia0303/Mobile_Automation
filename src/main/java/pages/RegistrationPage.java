@@ -2,31 +2,33 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.testng.Assert;
 
 public class RegistrationPage extends BasePage {
+
     public RegistrationPage(WebDriver driver) {
         super(driver);
     }
-    By emailBy = By.xpath(".//*[@name=\"email\"]");
-    By passwordBy = By.xpath(".//*[@name=\"password\"]");
-    By signInButtonBy = By.xpath("//*[@id=\"signup-form\"]/button");
-    By errorMessageUserBy = By.xpath("//span[@data-notify='message']");
-    By messageUserBy = By.xpath("//span[@data-notify='message']");
 
+    private static final By USER_EMAIL_BY = By.xpath(".//*[@name='email']");
+    private static final By USER_PASSWORD_BY = By.xpath(".//*[@name='password']");
+    private static final By SIGN_IN_BUTTON_BY = By.xpath("//*[@id='signup-form']/button");
+    private static final By ERROR_MESSAGE_BY = By.xpath("//span[@data-notify='message']");
+    private static final By MESSAGE_USER_BY = By.xpath("//span[@data-notify='message']");
 
-    public RegistrationPage loginToUser (String login, String password){
-        writeText(emailBy,login);
-        writeText(passwordBy, password);
-        click(signInButtonBy);
+    public RegistrationPage addNewUser(String login, String password) {
+        writeText(USER_EMAIL_BY, login);
+        writeText(USER_PASSWORD_BY, password);
+        click(SIGN_IN_BUTTON_BY);
         return this;
     }
-    public RegistrationPage successRegistration(String expectedText) {
-        assertEquals(messageUserBy, expectedText);
+
+    public RegistrationPage verifyMessageWithInstruction(String expectedText) {
+        assertEquals(MESSAGE_USER_BY, expectedText);
         return this;
     }
-    public RegistrationPage verifyUser(String expectedText) {
-        assertEquals(errorMessageUserBy, expectedText);
+
+    public RegistrationPage verifyMessage(String expectedText) {
+        assertEquals(ERROR_MESSAGE_BY, expectedText);
         return this;
     }
 

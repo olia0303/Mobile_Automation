@@ -8,26 +8,18 @@ import static module.DataUser.*;
 
 public class LoginTest extends BaseTest {
 
-
-    @Test(priority = 0)
+    @Test
     public void checkValidUserAndPassword() {
-        HomePage homePage = new HomePage(driver);
-        LoginPage loginPage = new LoginPage(driver);
-
         homePage.goToHomePage()
                 .goToLoginPage()
-                .loginToUser(LOGIN,PASSWORD);
-
+                .logInAsRegisteredUser(LOGIN,PASSWORD);
     }
 
-    @Test(priority = 1)
+    @Test
     public void checkUserForgotPasswordTest(){
-    HomePage homePage = new HomePage(driver);
-    LoginPage loginPage = new LoginPage(driver);
         homePage.goToHomePage()
                 .goToLoginPage()
                 .forgotPassword(LOGIN )
-                .verifyPassword(MESSAGE_WITH_INSTRUCTION);
-
-}
+                .verifyMessage(MESSAGE_WITH_INSTRUCTION);
+    }
 }

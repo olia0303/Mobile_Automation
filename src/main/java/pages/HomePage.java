@@ -6,26 +6,32 @@ import org.openqa.selenium.WebDriver;
 import static module.DataUser.URL;
 
 public class HomePage extends BasePage {
+
     public HomePage(WebDriver driver) {
         super(driver);
     }
-    By signInButtonBy = By.linkText("Sign up");
-    By logInButtonBy = By.linkText("Log in");
-    By chatInButtonBy = By.xpath(".//a[@href=\"/demo/chat/new\"]");
-    public HomePage goToHomePage (){
+
+    private static final By SIGN_IN_BUTTON_BY = By.linkText("Sign up");
+    private static final By LOG_IN_BUTTON_BY = By.linkText("Log in");
+    private static final By CHAT_IN_BUTTON_BY = By.xpath(".//a[@href='/demo/chat/new\']");
+
+    public HomePage goToHomePage() {
         driver.get(URL);
         return this;
     }
-    public RegistrationPage goToRegistrationPage (){
-        click(signInButtonBy);
+
+    public RegistrationPage goToRegistrationPage() {
+        click(SIGN_IN_BUTTON_BY);
         return new RegistrationPage(driver);
     }
-    public LoginPage goToLoginPage(){
-        click(logInButtonBy);
+
+    public LoginPage goToLoginPage() {
+        click(LOG_IN_BUTTON_BY);
         return new LoginPage(driver);
     }
-    public ChatPage goToChatPage(){
-        click(chatInButtonBy);
+
+    public ChatPage goToChatPage() {
+        click(CHAT_IN_BUTTON_BY);
         return new ChatPage(driver);
     }
 }
