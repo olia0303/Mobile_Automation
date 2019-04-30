@@ -10,7 +10,8 @@ public class ChatTest extends BaseTest {
         homePage.goToHomePage()
                 .goToChatPage()
                 .addNewUserInChat(NAME, EMAIL)
-                .verifyIsRegisteredUser(EXPECTED_NAME);
+                .verifyUserIcon(NAME)
+                .verifySettings(NAME, EMAIL);
     }
 
     @Test

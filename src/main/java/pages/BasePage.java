@@ -12,7 +12,7 @@ public class BasePage {
 
     WebDriver driver;
     private WebDriverWait wait;
-    private static final int TIMEOUT = 10;
+    private static final int TIMEOUT = 20;
 
     public BasePage(WebDriver driver) {
         this.driver = driver;
@@ -21,6 +21,9 @@ public class BasePage {
 
     public void waitVisibilityAll(By elementBy) {
         wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(elementBy));
+    }
+    public  void waitInVisibility(By elementBy) {
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(elementBy));
     }
 
     public void clear(By elementBy) {
