@@ -13,25 +13,25 @@ public class CapabilitiesGenerator {
         switch (driverType) {
             case FIREFOX:
                 if (os.contains("win")) {
-                    System.setProperty("webdrivers.gecko.driver", driverPath + "/geckodriver.exe");
+                    System.setProperty("webdriver.gecko.driver", driverPath + "/geckodriver.exe");
                 } else if (os.contains("mac")) {
-                    System.setProperty("webdrivers.gecko.driver", driverPath + "/geckodriver");
+                    System.setProperty("webdriver.gecko.driver", driverPath + "/geckodriver");
                 } else {
                 }
-                if (System.getProperty("webdrivers.gecko.driver") == null) {
-                    throw new IllegalStateException("System variable 'webdrivers.gecko.driver' should be set to path for executable driver");
+                if (System.getProperty("webdriver.gecko.driver") == null) {
+                    throw new IllegalStateException("System variable 'webdriver.gecko.driver' should be set to path for executable driver");
                 }
                 return DesiredCapabilities.firefox();
 
             case CHROME:
                 if (os.contains("win")) {
-                    System.setProperty("webdrivers.chrome.driver", driverPath + "/chromedriver1.exe");
+                    System.setProperty("webdriver.chrome.driver", driverPath + "/chromedriver.exe");
                 } else if (os.contains("mac")) {
-                    System.setProperty("webdrivers.chrome.driver", driverPath + "/chromedriver");
+                    System.setProperty("webdriver.chrome.driver", driverPath + "/chromedriver");
                 } else {
                 }
-                if (System.getProperty("webdrivers.chrome.driver") == null) {
-                    throw new IllegalStateException("System variable 'webdrivers.chrome.driver' should be set to path for executable driver");
+                if (System.getProperty("webdriver.chrome.driver") == null) {
+                    throw new IllegalStateException("System variable 'webdriver.chrome.driver' should be set to path for executable driver");
                 }
                 return DesiredCapabilities.chrome();
 
@@ -53,9 +53,9 @@ public class CapabilitiesGenerator {
         ChromeOptions options = new ChromeOptions();
         String os = System.getProperty("os.name").toLowerCase();
         if (os.contains("win")) {
-            System.setProperty("webdrivers.chrome.driver", driverPath + "/chromedriver1.exe");
+            System.setProperty("webdriver.chrome.driver", driverPath + "/chromedriver.exe");
         } else if (os.contains("mac")) {
-            System.setProperty("webdrivers.chrome.driver", driverPath + "/chromedriver");
+            System.setProperty("webdriver.chrome.driver", driverPath + "/chromedriver");
         }
         options.addArguments("--start-maximized");
         options.addArguments("--ignore-certificate-errors");
@@ -68,13 +68,13 @@ public class CapabilitiesGenerator {
         FirefoxOptions options = new FirefoxOptions();
         String os = System.getProperty("os.name").toLowerCase();
         if (os.contains("win")) {
-            System.setProperty("webdrivers.gecko.driver", driverPath + "/geckodriver.exe");
+            System.setProperty("webdriver.gecko.driver", driverPath + "/geckodriver.exe");
         } else if (os.contains("mac")) {
-            System.setProperty("webdrivers.gecko.driver", driverPath + "/geckodriver");
+            System.setProperty("webdriver.gecko.driver", driverPath + "/geckodriver");
         } else {
         }
-        if (System.getProperty("webdrivers.gecko.driver") == null) {
-            throw new IllegalStateException("System variable 'webdrivers.gecko.driver' should be set to path for executable driver");
+        if (System.getProperty("webdriver.gecko.driver") == null) {
+            throw new IllegalStateException("System variable 'webdriver.gecko.driver' should be set to path for executable driver");
         }
         options.setCapability("marionette", true);
         return options;

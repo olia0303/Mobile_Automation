@@ -3,6 +3,10 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+import static com.module.DataUser.*;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.equalTo;
+
 public class RegistrationPage extends BasePage {
 
     public RegistrationPage(WebDriver driver) {
@@ -14,6 +18,19 @@ public class RegistrationPage extends BasePage {
     private static final By SIGN_IN_BUTTON_BY = By.xpath("//*[@id='signup-form']/button");
     private static final By ERROR_MESSAGE_BY = By.xpath("//span[@data-notify='message']");
     private static final By MESSAGE_USER_BY = By.xpath("//span[@data-notify='message']");
+    private static final By MESSAGE_BY = By.xpath("//div[contains(text(),'Please Sign up to continue')]");
+
+    @Override
+    public RegistrationPage openPage() {
+        driver.get(URL_SIGN_IN);
+        return this;
+    }
+
+    @Override
+    public RegistrationPage isPageOpened() {
+        isDisplayedElement(MESSAGE_BY);
+        return this;
+    }
 
     public RegistrationPage addNewUser(String login, String password) {
         writeText(USER_EMAIL_BY, login);
@@ -23,18 +40,14 @@ public class RegistrationPage extends BasePage {
     }
 
     public RegistrationPage verifyMessageWithInstruction(String expectedText) {
-        assertEquals(MESSAGE_USER_BY, expectedText);
+        String message = readText(MESSAGE_USER_BY);
+        assertThat(message, equalTo(expectedText));
         return this;
     }
 
     public RegistrationPage verifyMessage(String expectedText) {
-        assertEquals(ERROR_MESSAGE_BY, expectedText);
+        String message = readText(ERROR_MESSAGE_BY);
+        assertThat(message, equalTo(expectedText));
         return this;
     }
-
-
-
-
-
-
 }

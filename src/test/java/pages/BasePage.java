@@ -4,15 +4,16 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
 
-import java.util.List;
-
-public class BasePage {
+abstract public class BasePage {
 
     WebDriver driver;
     private WebDriverWait wait;
     private static final int TIMEOUT = 20;
+
+    abstract public BasePage openPage();
+
+    abstract public BasePage isPageOpened();
 
     public BasePage(WebDriver driver) {
         this.driver = driver;
@@ -22,7 +23,8 @@ public class BasePage {
     public void waitVisibilityAll(By elementBy) {
         wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(elementBy));
     }
-    public  void waitInVisibility(By elementBy) {
+
+    public void waitInVisibility(By elementBy) {
         wait.until(ExpectedConditions.invisibilityOfElementLocated(elementBy));
     }
 
@@ -46,8 +48,7 @@ public class BasePage {
         return driver.findElement(elementBy).getText();
     }
 
-    public void assertEquals(By elementBy, String expectedText) {
-        waitVisibilityAll(elementBy);
-        Assert.assertEquals(readText(elementBy), expectedText);
+    public void isDisplayedElement(By elementBy) {
+        driver.findElement(elementBy).isDisplayed();
     }
 }

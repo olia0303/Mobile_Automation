@@ -1,23 +1,20 @@
 package tests;
 
 import org.testng.annotations.Test;
-import static module.DataUser.*;
+import static com.module.DataUser.*;
 
 public class RegistrationTest extends BaseTest {
 
     @Test
     public void checkUserRegistrationValidEmailAndPasswordTest() {
-        homePage.goToHomePage()
-                .goToRegistrationPage()
-                .addNewUser(LOGIN,PASSWORD)
+        registrationPage.openPage()
+                .addNewUser(NEW_LOGIN,PASSWORD)
                 .verifyMessageWithInstruction(MESSAGE_WITH_INSTRUCTION);
-
     }
 
     @Test
     public void checkUserRegistrationWithExistingEmailTest() {
-        homePage.goToHomePage()
-                .goToRegistrationPage()
+        registrationPage.openPage()
                 .addNewUser(LOGIN,PASSWORD)
                 .verifyMessage(MESSAGE_ERROR);
     }
