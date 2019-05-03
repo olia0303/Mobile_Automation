@@ -22,7 +22,7 @@ public class LoginTest extends BaseTest {
     @Test
     public void checkInValidUserAndPassword() {
         loginPage.openPage()
-                  .nonActivatedUser(NEW_LOGIN, PASSWORD_USER)
+                  .nonActivatedUser(EMAIL, PASSWORD)
                   .verifyMessageNonActivatedUser(MESSAGE_NO_ACTIVATION);
     }
 }
