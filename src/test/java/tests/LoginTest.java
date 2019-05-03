@@ -8,7 +8,7 @@ public class LoginTest extends BaseTest {
     @Test
     public void checkValidUserAndPassword() {
         loginPage.openPage()
-                 .logInAsRegisteredUser(LOGIN,PASSWORD)
+                 .logInAsRegisteredUser(LOGIN, PASSWORD)
                  .isPageOpened();
     }
 
@@ -22,7 +22,7 @@ public class LoginTest extends BaseTest {
     @Test
     public void checkInValidUserAndPassword() {
         loginPage.openPage()
-                  .nonActivatedUser(NEW_LOGIN,PASSWORD_USER)
+                  .nonActivatedUser(NEW_LOGIN, PASSWORD_USER)
                   .verifyMessageNonActivatedUser(MESSAGE_NO_ACTIVATION);
     }
 }
