@@ -1,31 +1,28 @@
 package tests;
 
 import org.testng.annotations.Test;
-import pages.HomePage;
-import pages.LoginPage;
+import static com.module.DataUser.*;
 
 public class LoginTest extends BaseTest {
 
-
-    @Test(priority = 0)
+    @Test
     public void checkValidUserAndPassword() {
-        HomePage homePage = new HomePage(driver);
-        LoginPage loginPage = new LoginPage(driver);
-
-        homePage.goToHomePage()
-                .goToLoginPage()
-                .loginToUser("olka030389@yandex.ru", "oli6630389");
-
+        loginPage.openPage()
+                 .logInAsRegisteredUser(LOGIN, PASSWORD)
+                 .isPageOpened();
     }
 
-    @Test(priority = 1)
-    public void checkUserForgotPasswordTest(){
-    HomePage homePage = new HomePage(driver);
-    LoginPage loginPage = new LoginPage(driver);
-        homePage.goToHomePage()
-                .goToLoginPage()
-                .forgotPassword("olka030389@yandex.ru" )
-                .verifyPassword("Message with instructions was sent");
+    @Test
+    public void checkUserForgotPasswordTest() {
+        loginPage.openPage()
+                 .forgotPassword(LOGIN )
+                 .verifyMessage(MESSAGE_WITH_INSTRUCTION);
+    }
 
-}
+    @Test
+    public void checkInValidUserAndPassword() {
+        loginPage.openPage()
+                  .nonActivatedUser(NEW_LOGIN, PASSWORD_USER)
+                  .verifyMessageNonActivatedUser(MESSAGE_NO_ACTIVATION);
+    }
 }
