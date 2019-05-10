@@ -1,17 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Test-class Suite" parallel="tests" thread-count="3" >
 <test name="Login Tests" >
     <classes>
-        <class name="tests.LoginTest" />
+        <class name="tests.LoginPageTest" />
     </classes>
 </test>
     <test name="Chat tests" >
         <classes>
-            <class name="tests.ChatTest" />
+            <class name="tests.ChatPageTest" />
         </classes>
     </test>
     <test name="Registration tests" >
         <classes>
-            <class name="tests.RegistrationTest" />
+            <class name="tests.RegistrationPageTest" />
         </classes>
     </test>
 </suite>

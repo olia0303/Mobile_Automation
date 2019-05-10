@@ -1,5 +1,6 @@
 package pages;
 
+import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import java.time.LocalDateTime;
@@ -7,7 +8,7 @@ import java.time.format.DateTimeFormatter;
 import static com.module.DataUser.*;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
-
+@Log4j2
 public class ChatPage extends BasePage {
 
     public ChatPage(WebDriver driver) {
@@ -30,6 +31,7 @@ public class ChatPage extends BasePage {
     @Override
     public ChatPage openPage() {
         driver.get(URL_CHAT);
+        log.info("Loading Chat page ");
         return this;
     }
 
@@ -81,6 +83,7 @@ public class ChatPage extends BasePage {
     LocalDateTime myDateObj = LocalDateTime.now();
     DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("MM/dd/yyyy, HH:mm");
     String formattedDate = myDateObj.format(myFormatObj);
+    log.info("Get date: " + formattedDate);
     return formattedDate;
     }
 

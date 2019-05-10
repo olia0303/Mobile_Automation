@@ -1,5 +1,6 @@
 package pages;
 
+import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -7,6 +8,7 @@ import static com.module.DataUser.*;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 
+@Log4j2
 public class LoginPage extends BasePage{
 
     public LoginPage(WebDriver driver) {
@@ -25,6 +27,7 @@ public class LoginPage extends BasePage{
     @Override
     public LoginPage openPage() {
         driver.get(URL_LOGIN);
+        log.info("Loading Login page");
         return this;
     }
 
