@@ -17,13 +17,13 @@ public class ChatSteps {
 
     @Step("Open Chat Page")
     public ChatSteps openPage() {
-        log.info("Open chat page");
         chatPage.openPage();
         return this;
     }
 
     @Step("Fill profile")
-    public ChatSteps fillProfile() {
+    public ChatSteps fillProfile(String name,String login,String url) {
+        log.info("Type data user:" + name + login + url);
         chatPage.addNewUserInChat(NAME, NEW_LOGIN, PHOTO_URL);
         return this;
     }
@@ -41,12 +41,13 @@ public class ChatSteps {
     }
 
     @Step ("Send message in chat")
-    public ChatSteps sendMessage() {
+    public ChatSteps sendMessage(String text) {
+        log.info("Type message: " + text);
         chatPage.sendingMessageByUser(TEXT);
         return this;
     }
 
-    @Step("Check details send message")
+    @Step("Check message details")
     public ChatSteps verifyMessage() {
         chatPage.verifyDetailsMessage(NAME, TEXT);
         return this;

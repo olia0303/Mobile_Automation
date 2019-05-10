@@ -1,10 +1,12 @@
 package utils.driver;
 
+import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import utils.PropertyManager;
 
+@Log4j2
 public class CapabilitiesGenerator {
 
     public static DesiredCapabilities getDefaultCapabilities(DriverType driverType) {
@@ -13,7 +15,10 @@ public class CapabilitiesGenerator {
         switch (driverType) {
             case FIREFOX:
                 if (os.contains("win")) {
-                    System.setProperty("webdriver.gecko.driver", driverPath + "/geckodriver.exe");
+                    String driverPathFull = driverPath + "/geckodriver.exe";
+                    System.setProperty("webdriver.gecko.driver", driverPathFull);
+                    log.info(String.format("Setting property 'webdriver.gecko.driver' for driverType '%s', os '%s' to '%s'",
+                            driverType, os, driverPathFull));
                 } else if (os.contains("mac")) {
                     System.setProperty("webdriver.gecko.driver", driverPath + "/geckodriver");
                 } else {
@@ -25,7 +30,10 @@ public class CapabilitiesGenerator {
 
             case CHROME:
                 if (os.contains("win")) {
-                    System.setProperty("webdriver.chrome.driver", driverPath + "/chromedriver.exe");
+                    String driverPathAll = driverPath + "/chromedriver.exe";
+                    System.setProperty("webdriver.chrome.driver", driverPathAll);
+                    log.info(String.format("Setting property 'webdriver.chrome.driver' for driverType '%s', os '%s' to '%s'",
+                            driverType, os, driverPathAll));
                 } else if (os.contains("mac")) {
                     System.setProperty("webdriver.chrome.driver", driverPath + "/chromedriver");
                 } else {
@@ -53,7 +61,10 @@ public class CapabilitiesGenerator {
         ChromeOptions options = new ChromeOptions();
         String os = System.getProperty("os.name").toLowerCase();
         if (os.contains("win")) {
-            System.setProperty("webdriver.chrome.driver", driverPath + "/chromedriver.exe");
+            String driverPathLong = driverPath + "/chromedriver.exe";
+            System.setProperty("webdriver.chrome.driver", driverPathLong);
+            log.info(String.format("Setting property 'webdriver.chrome.driver' for '%s', os '%s' to '%s'",options,
+                     os, driverPathLong));
         } else if (os.contains("mac")) {
             System.setProperty("webdriver.chrome.driver", driverPath + "/chromedriver");
         }
@@ -68,7 +79,10 @@ public class CapabilitiesGenerator {
         FirefoxOptions options = new FirefoxOptions();
         String os = System.getProperty("os.name").toLowerCase();
         if (os.contains("win")) {
-            System.setProperty("webdriver.gecko.driver", driverPath + "/geckodriver.exe");
+            String driverPathTotal = driverPath + "/geckodriver.exe";
+            System.setProperty("webdriver.gecko.driver",driverPathTotal);
+            log.info(String.format("Setting property 'webdriver.gecko.driver' for driverType '%s', os '%s' to '%s'",
+                    options, os, driverPathTotal));
         } else if (os.contains("mac")) {
             System.setProperty("webdriver.gecko.driver", driverPath + "/geckodriver");
         } else {

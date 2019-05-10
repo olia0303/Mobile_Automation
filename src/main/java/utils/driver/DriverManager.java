@@ -1,16 +1,19 @@
 package utils.driver;
 
+import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import utils.PropertyManager;
 
+@Log4j2
 public class DriverManager {
 
     private WebDriver driver;
 
     public WebDriver getDriver() {
         String browserType = new PropertyManager().get("browser");
+        log.info("Type browser:" + browserType);
         if (null == driver) {
             DriverType browser = DriverType.valueOf(browserType.toUpperCase());
             switch (browser) {

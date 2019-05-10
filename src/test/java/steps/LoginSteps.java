@@ -5,9 +5,10 @@ import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.WebDriver;
 import pages.LoginPage;
 import static com.module.DataUser.*;
+
 @Log4j2
 public class LoginSteps {
-    private LoginPage loginPage ;
+    private LoginPage loginPage;
 
     public LoginSteps(WebDriver driver) {
         loginPage = new LoginPage(driver);
@@ -15,7 +16,6 @@ public class LoginSteps {
 
     @Step("Open Login Page")
     public LoginSteps openPage() {
-        log.info("Open Login Page");
         loginPage.openPage();
         return this;
     }
@@ -34,7 +34,8 @@ public class LoginSteps {
     }
 
     @Step("Login into the system as a non-existent user")
-    public LoginSteps logInNonActivatedUser() {
+    public LoginSteps logInNonActivatedUser(String email, String password) {
+        log.info("Type user data: " + email + password);
         loginPage.nonActivatedUser(EMAIL, PASSWORD);
         return this;
     }
@@ -45,7 +46,7 @@ public class LoginSteps {
         return this;
     }
 
-    @Step ("Is page opened")
+    @Step ("Check if the page is open")
     public LoginSteps isPageOpened() {
         loginPage.isPageOpened();
         return this;

@@ -10,11 +10,7 @@ public class DataUser {
     public static final String MESSAGE_WITH_INSTRUCTION = "Message with instructions was sent";
     public static final String MESSAGE_ERROR = "Error: User already exists";
     public static final String TEXT = "This my project";
-    public static final String URL_LOGIN = "https://www.integrivideo.com/login";
-    public static final String URL_SIGN_IN = "https://www.integrivideo.com/signup";
-    public static final String URL_CHAT = "https://www.integrivideo.com/demo/chat/new";
     public static final String MESSAGE_NO_ACTIVATION = "Error: User is not found";
     public static final String NEW_LOGIN = "mail"+ RandomStringUtils.randomNumeric(5) + "@gmail.com";
     public static final String EMAIL = "mail"+ RandomStringUtils.randomNumeric(6) + "@gmail.com";
-
 }

@@ -16,13 +16,13 @@ public class RegistrationSteps {
 
     @Step("Open Registration Page")
     public RegistrationSteps openPage() {
-        log.info("Open Registration page");
         registrationPage.openPage();
         return this;
     }
 
-    @Step("Sign up the system")
-    public RegistrationSteps signUp() {
+    @Step("Sign up into the system")
+    public RegistrationSteps signUp(String login, String password) {
+        log.info("Type data new user: " + login + password);
         registrationPage.addNewUser(NEW_LOGIN, PASSWORD);
         return this;
     }

@@ -42,7 +42,7 @@ abstract public class BasePage {
 
     public void writeText(By elementBy, String text) {
         waitVisibilityAll(elementBy);
-        log.info("Get text: "  + text);
+        log.info("Write text: "  + text);
         driver.findElement(elementBy).sendKeys(text);
     }
 

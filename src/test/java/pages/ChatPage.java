@@ -1,14 +1,13 @@
 package pages;
 
-import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import static com.module.DataUser.*;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
-@Log4j2
+import static other.Urls.CHAT_PAGE;
+
 public class ChatPage extends BasePage {
 
     public ChatPage(WebDriver driver) {
@@ -16,8 +15,8 @@ public class ChatPage extends BasePage {
     }
 
     private static final By SETTINGS_BUTTON_BY = By.xpath("//span[@class='integri-chat-settings integri-pointer']");
-    private static final By USER_NAME_BY = By.xpath(".//*[@name='userName']");
-    private static final By USER_EMAIL_BY = By.xpath(".//*[@name='userEmail']");
+    private static final By USER_NAME_BY = By.name("userName");
+    private static final By USER_EMAIL_BY = By.name("userEmail");
     private static final By USER_PHOTO_BY = By.xpath("//input[@placeholder='Photo URL']");
     private static final By SAVE_BUTTON_BY = By.xpath("//button[@class='integri-user-settings-save integri-button-blue']");
     private static final By FIELD_INPUT_TEXT_BY = By.xpath("//textarea[@placeholder='Start typing here']");
@@ -30,8 +29,7 @@ public class ChatPage extends BasePage {
 
     @Override
     public ChatPage openPage() {
-        driver.get(URL_CHAT);
-        log.info("Loading Chat page ");
+        driver.get(CHAT_PAGE);
         return this;
     }
 
@@ -80,11 +78,10 @@ public class ChatPage extends BasePage {
     }
 
     public String inputDate() {
-    LocalDateTime myDateObj = LocalDateTime.now();
-    DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("MM/dd/yyyy, HH:mm");
-    String formattedDate = myDateObj.format(myFormatObj);
-    log.info("Get date: " + formattedDate);
-    return formattedDate;
+        LocalDateTime myDateObj = LocalDateTime.now();
+        DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("MM/dd/yyyy, HH:mm");
+        String formattedDate = myDateObj.format(myFormatObj);
+        return formattedDate;
     }
 
     public ChatPage sendingMessageByUser(String text) {
