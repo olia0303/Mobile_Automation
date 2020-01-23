@@ -1,4 +1,4 @@
-package tests;
+/*package tests;
 
 import io.qameta.allure.Description;
 import org.testng.annotations.Test;
@@ -22,3 +22,4 @@ public class RegistrationPageTest extends BaseTest {
                          .checkErrorMessage();
     }
 }
+*/

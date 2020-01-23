@@ -1,4 +1,4 @@
-package tests;
+/*package tests;
 
 import io.qameta.allure.Description;
 import org.testng.annotations.Test;
@@ -23,4 +23,4 @@ public class ChatPageTest extends BaseTest {
                  .sendMessage(TEXT)
                  .verifyMessage();
     }
-}
+}*/

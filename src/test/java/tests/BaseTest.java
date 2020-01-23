@@ -1,32 +1,25 @@
 package tests;
 
-import org.openqa.selenium.WebDriver;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import steps.ChatSteps;
-import steps.LoginSteps;
-import steps.RegistrationSteps;
-import utils.driver.DriverManager;
+import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.service.local.AppiumDriverLocalService;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+import utils.appium.AppiumServerJava;
 
 public class BaseTest {
 
-    public WebDriver driver;
-    LoginSteps loginSteps;
-    RegistrationSteps registrationSteps;
-    ChatSteps chatSteps;
+    AppiumDriverLocalService appiumService;
+    AppiumDriver driver;
+    
+    @BeforeClass
+    void startAppiumServer() {
+        appiumService = AppiumServerJava.startServer();
+    }           
 
-    @BeforeMethod
-    public void startBrowser() {
-        DriverManager manager = new DriverManager();
-        driver = manager.getDriver();
-        loginSteps = new LoginSteps(driver);
-        registrationSteps = new RegistrationSteps(driver);
-        chatSteps = new ChatSteps(driver);
-    }
-
-    @AfterMethod
-    void stopBrowser() {
-        driver.quit();
-    }
+//    @AfterClass
+//    void stopAppiumServer(){
+//        driver.quit();
+//        appiumService.stop();
+//    }
 }
 

@@ -1,4 +1,4 @@
-package tests;
+/*package tests;
 
 import io.qameta.allure.Description;
 import org.testng.annotations.Test;
@@ -21,11 +21,5 @@ public class LoginPageTest extends BaseTest {
                 .forgotPassword();
     }
 
-    @Test
-    @Description("Login into the app as a non-existent user")
-    public void loginByNonExistentUserTest() {
-        loginSteps.openPage()
-                  .logInNonActivatedUser(EMAIL, PASSWORD)
-                  .verifyMessageNonActivatedUser();
-    }
-}
+
+}*/
