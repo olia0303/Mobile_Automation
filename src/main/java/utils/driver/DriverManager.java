@@ -1,32 +1,29 @@
 package utils.driver;
 
-import lombok.extern.log4j.Log4j2;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import utils.PropertyManager;
+import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.service.local.AppiumDriverLocalService;
+import org.openqa.selenium.remote.DesiredCapabilities;
 
-@Log4j2
-public class DriverManager {
 
-    private WebDriver driver;
+public abstract class DriverManager {
 
-    public WebDriver getDriver() {
-        String browserType = new PropertyManager().get("browser");
-        log.info("Type browser:" + browserType);
+    AppiumDriver driver;
+    DesiredCapabilities cap = new DesiredCapabilities();
+    
+    protected abstract AppiumDriver createDriver(AppiumDriverLocalService service);
+   
+    public AppiumDriver getDriver(AppiumDriverLocalService service) {
         if (null == driver) {
-            DriverType browser = DriverType.valueOf(browserType.toUpperCase());
-            switch (browser) {
-                case FIREFOX:
-                    driver = new FirefoxDriver(CapabilitiesGenerator.getFireFoxOptions());
-                    break;
-                case CHROME:
-                    driver = new ChromeDriver(CapabilitiesGenerator.getChromeOptions());
-                    break;
-                default:
-                    throw new IllegalStateException(String.format("Unsupported browser type: %s", browserType));
-            }
+            cap.setCapability("platformName", "Android");
+            cap.setCapability("deviceName", "Nexus5X");
+            cap.setCapability("appActivity", "com.android.calculator2.Calculator");
+            cap.setCapability("appPackage", "com.android.calculator2");
+            cap.setCapability("avd", "Nexus5X");
+            driver = createDriver(service);
         }
         return driver;
     }
 }
+
+    
+   

@@ -1,6 +1,8 @@
 <component name="ProjectDictionaryState">
   <dictionary name="Volha.Saldatsenkava">
     <words>
+      <w>chromedriver</w>
+      <w>geckodriver</w>
       <w>olka</w>
       <w>webdriver</w>
     </words>
