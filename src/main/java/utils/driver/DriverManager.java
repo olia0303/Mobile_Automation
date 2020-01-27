@@ -16,8 +16,8 @@ public abstract class DriverManager {
         if (null == driver) {
             cap.setCapability("platformName", "Android");
             cap.setCapability("deviceName", "Nexus5X");
-            cap.setCapability("appActivity", "com.android.calculator2.Calculator");
-            cap.setCapability("appPackage", "com.android.calculator2");
+            cap.setCapability("appActivity", "com.vodqareactnative.MainActivity");
+            cap.setCapability("appPackage", "com.vodqareactnative");
             cap.setCapability("avd", "Nexus5X");
             driver = createDriver(service);
         }

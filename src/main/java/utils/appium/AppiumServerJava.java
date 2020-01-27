@@ -14,6 +14,8 @@ public final class AppiumServerJava {
                 new AppiumServiceBuilder()
                         .withIPAddress("127.0.0.1")
                         .usingPort(4723)
+                        //for home
+                       //.withAppiumJS(new File("C:\\Program Files\\Appium\\resources\\app\\node_modules\\appium\\build\\lib\\main.js"))
                         .withAppiumJS(new File("C:\\Users\\Volha.Saldatsenkava\\AppData\\Local\\Programs\\Appium\\resources\\app\\node_modules\\appium\\build\\lib\\main.js"))
                         .usingDriverExecutable(new File("C:\\Program Files\\nodejs\\node.exe"))
                         .withArgument(GeneralServerFlag.SESSION_OVERRIDE)
