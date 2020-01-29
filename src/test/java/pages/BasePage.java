@@ -21,7 +21,6 @@ abstract public class BasePage {
     private static final int TIMEOUT = 30;
     private static final int POLLING = 100;
     
-   // abstract public BasePage openPage();
 
     abstract public BasePage isPageOpened();
 

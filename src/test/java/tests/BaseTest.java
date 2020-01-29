@@ -4,7 +4,8 @@ import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
-import steps.ComponentSteps;
+import pages.ComponentPage;
+import pages.LoginPage;
 import utils.appium.AppiumServerJava;
 import utils.driver.AndroidDriverManager;
 import utils.driver.DriverManager;
@@ -13,14 +14,16 @@ public class BaseTest {
 
     AppiumDriverLocalService appiumService;
     AppiumDriver driver;
-    ComponentSteps steps;
-
+    LoginPage loginPage;
+    ComponentPage componentPage;
+    
     @BeforeClass
     void startAppiumServer() {
         appiumService = AppiumServerJava.startServer();
-        DriverManager manager =  new AndroidDriverManager();
+        DriverManager manager = new AndroidDriverManager();
         driver = manager.getDriver(appiumService);
-        steps = new ComponentSteps(driver);
+        loginPage = new LoginPage(driver);
+        componentPage = new ComponentPage(driver);
     }
 
     @AfterClass
