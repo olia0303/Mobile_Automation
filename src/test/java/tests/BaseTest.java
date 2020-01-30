@@ -4,8 +4,7 @@ import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
-import pages.ComponentPage;
-import pages.LoginPage;
+import pages.*;
 import utils.appium.AppiumServerJava;
 import utils.driver.AndroidDriverManager;
 import utils.driver.DriverManager;
@@ -15,7 +14,10 @@ public class BaseTest {
     AppiumDriverLocalService appiumService;
     AppiumDriver driver;
     LoginPage loginPage;
-    ComponentPage componentPage;
+    NativeViewPage nativeViewPage;
+    SliderPage sliderPage;
+    VerticalSwipingPage verticalSwipingPage;
+    DoubleTapPage doubleTapPage;
     
     @BeforeClass
     void startAppiumServer() {
@@ -23,7 +25,10 @@ public class BaseTest {
         DriverManager manager = new AndroidDriverManager();
         driver = manager.getDriver(appiumService);
         loginPage = new LoginPage(driver);
-        componentPage = new ComponentPage(driver);
+        nativeViewPage = new NativeViewPage(driver);
+        sliderPage = new SliderPage(driver);
+        verticalSwipingPage = new VerticalSwipingPage(driver);
+        doubleTapPage = new DoubleTapPage(driver);
     }
 
     @AfterClass
