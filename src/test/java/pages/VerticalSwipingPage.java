@@ -20,7 +20,7 @@ public class VerticalSwipingPage extends BasePage {
     }
 
     @Override
-    public void  isPageOpened() {
+    public void isPageOpened() {
        isDisplayedElement(SWIPE_BY);
     }
 

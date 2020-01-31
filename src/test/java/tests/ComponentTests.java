@@ -43,6 +43,7 @@ public class ComponentTests extends BaseTest {
                 .isListViewOpened();
         doubleTapPage.openDoubleTap()
                      .isPageOpened();
-        doubleTapPage.doubleTapAction();
+        doubleTapPage.doubleTapAction()
+                     .checkSuccessMessage();
     }
 }

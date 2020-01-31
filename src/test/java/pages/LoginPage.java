@@ -16,9 +16,8 @@ public class LoginPage extends BasePage{
     }
     
     @Override
-    public LoginPage isPageOpened() {
+    public void isPageOpened() {
         isDisplayedElement(LOGIN_ICON_BY);
-        return this;
     }
 
     public LoginPage logInAsRegisteredUser() {
