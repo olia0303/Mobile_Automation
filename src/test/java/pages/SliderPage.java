@@ -12,7 +12,7 @@ public class SliderPage extends BasePage {
     @AndroidFindBy(id = "slider")
     public MobileElement slider;
     
-    private static final By SLIDER_BY = By.xpath("//*[@text='Slider']");
+    private static final String SLIDER_BY = "//*[@text='Slider']";
     
     public SliderPage(AppiumDriver<MobileElement> driver) {
         super(driver);
@@ -25,7 +25,7 @@ public class SliderPage extends BasePage {
     }
 
     public SliderPage openSlider() {
-        click(SLIDER_BY);
+        driver.findElement(By.xpath(SLIDER_BY)).click();
         return this;
     }
 

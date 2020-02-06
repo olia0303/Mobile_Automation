@@ -12,7 +12,7 @@ public class VerticalSwipingPage extends BasePage {
     @AndroidFindBy(id = "listview")
     public MobileElement listView;
     
-    private static final By SWIPE_BY = By.xpath("//*[@text='Vertical swiping']");
+    private static final String SWIPE_BY = "//*[@text='Vertical swiping']";
     
     public VerticalSwipingPage(AppiumDriver<MobileElement> driver) {
         super(driver);
@@ -21,11 +21,11 @@ public class VerticalSwipingPage extends BasePage {
 
     @Override
     public void isPageOpened() {
-       isDisplayedElement(SWIPE_BY);
+        driver.findElement(By.xpath(SWIPE_BY)).isDisplayed();
     }
 
     public VerticalSwipingPage openVerticalSwiping() {
-        click(SWIPE_BY);
+        driver.findElement(By.xpath(SWIPE_BY)).click();
         return this;
     }
     

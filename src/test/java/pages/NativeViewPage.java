@@ -16,8 +16,8 @@ public class NativeViewPage extends BasePage {
     @AndroidFindBy(id = "container3")
     public MobileElement itemViewThree;
 
-    private static final By NATIVE_VIEW_BY = By.xpath("//*[@text='Native View']");
-    private static final By NATIVE_PAGE_BY = By.xpath("//*[@text='Native View Demo']");
+    private static final String NATIVE_VIEW_BY = "//*[@text='Native View']";
+    private static final String NATIVE_PAGE_BY = "//*[@text='Native View Demo']";
 
     public NativeViewPage(AppiumDriver<MobileElement> driver) {
         super(driver);
@@ -26,11 +26,11 @@ public class NativeViewPage extends BasePage {
 
     @Override
     public void isPageOpened() {
-        isDisplayedElement(NATIVE_PAGE_BY);
+        driver.findElement(By.xpath(NATIVE_PAGE_BY)).isDisplayed();
     }
 
     public NativeViewPage openNativeView() {
-        click(NATIVE_VIEW_BY);
+        driver.findElement(By.xpath(NATIVE_VIEW_BY)).click();
         return this;
     }
 

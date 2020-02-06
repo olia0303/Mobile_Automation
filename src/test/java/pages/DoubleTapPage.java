@@ -13,9 +13,9 @@ public class DoubleTapPage extends BasePage {
     @AndroidFindBy(id = "android:id/message")
     public MobileElement message;
     
-    private static final By DOUBLE_TAP_BY = By.xpath("//*[@text='Double Tap']");
-    private static final By DOUBLE_TAP_DEMO_BY = By.xpath("//*[@text='Double Tap Demo']");
-    private static final By DOUBLE_TAB_BUTTON_XPATH = By.xpath("//*[@text='Double Tap Me']");
+    private static final String DOUBLE_TAP_BY = "//*[@text='Double Tap']";
+    private static final String DOUBLE_TAP_DEMO_BY = "//*[@text='Double Tap Demo']";
+    private static final String DOUBLE_TAB_BUTTON_XPATH = "//*[@text='Double Tap Me']";
             
     public DoubleTapPage(AppiumDriver<MobileElement> driver) {
         super(driver);
@@ -23,17 +23,17 @@ public class DoubleTapPage extends BasePage {
     }
 
     public DoubleTapPage openDoubleTap() {
-        click(DOUBLE_TAP_BY);
+        driver.findElement(By.xpath(DOUBLE_TAP_BY)).click();
         return this;
     }
     
     @Override
     public void isPageOpened() {
-       isDisplayedElement(DOUBLE_TAP_DEMO_BY); 
+        driver.findElement(By.xpath(DOUBLE_TAP_DEMO_BY)).isDisplayed();
     }
     
     public DoubleTapPage doubleTapAction() {
-        MobileElement element = driver.findElement(DOUBLE_TAB_BUTTON_XPATH);
+        MobileElement element = driver.findElement(By.xpath(DOUBLE_TAB_BUTTON_XPATH));
         TouchActions action = new TouchActions(driver);
         action.doubleTap(element);
         action.perform();
