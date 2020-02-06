@@ -10,7 +10,9 @@ import utils.driver.AndroidDriverManager;
 import utils.driver.DriverManager;
 
 public class BaseTest {
-
+    private String deviceName = "Nexus5X";
+    private String platform = "Android";
+    
     AppiumDriverLocalService appiumService;
     AppiumDriver driver;
     LoginPage loginPage;
@@ -18,12 +20,17 @@ public class BaseTest {
     SliderPage sliderPage;
     VerticalSwipingPage verticalSwipingPage;
     DoubleTapPage doubleTapPage;
+
+    void setCustomCapabilities(String _deviceName, String _platform){
+        deviceName = _deviceName;
+        platform = _platform;
+    }
     
     @BeforeClass
     void startAppiumServer() {
         appiumService = AppiumServerJava.startServer();
         DriverManager manager = new AndroidDriverManager();
-        driver = manager.getDriver(appiumService);
+        driver = manager.getDriver(appiumService, deviceName, platform);
         loginPage = new LoginPage(driver);
         nativeViewPage = new NativeViewPage(driver);
         sliderPage = new SliderPage(driver);

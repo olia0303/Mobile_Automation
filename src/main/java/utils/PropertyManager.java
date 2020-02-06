@@ -1,6 +1,8 @@
 
 package utils;
+
 import lombok.extern.log4j.Log4j2;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
@@ -8,14 +10,23 @@ import java.util.Properties;
 @Log4j2
 public class PropertyManager {
 
-    private String propertyFilePath;
-    private Properties prop;
+    private static PropertyManager instance;
+    private static final Object lock = new Object();
+    private static String propertyFilePath;
+    private static Properties prop;
 
-    public PropertyManager () {
-        propertyFilePath = System.getProperty("user.dir") + "/src/main/resources/application.properties";
+    public static PropertyManager getInstance () {
+        propertyFilePath = System.getProperty("user.dir") + "\\src\\main\\resources\\application.properties";
         log.debug(String.format("Reading properties from %s", propertyFilePath));
-        loadData();
+        if (instance == null) {
+            synchronized (lock) {
+                instance = new PropertyManager();
+                instance.loadData();
+            }
+        }
+        return instance;
     }
+
 
     private void loadData() {
         prop = new Properties();

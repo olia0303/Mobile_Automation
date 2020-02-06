@@ -1,19 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Test-class Suite" parallel="tests" thread-count="3" >
-<test name="Login Tests" >
+<suite name="Test-class Suite" parallel="tests" >
+<test name="Android - Tests" >
+    <parameter name="deviceName" value="Nexus5X"/>
+    <parameter name="platform" value="Android"/>
     <classes>
-        <class name="tests.LoginPageTest" />
+        <class name="tests.ComponentTests"/>
     </classes>
-</test>
-    <test name="Chat tests" >
-        <classes>
-            <class name="tests.ChatPageTest" />
-        </classes>
-    </test>
-    <test name="Registration tests" >
-        <classes>
-            <class name="tests.RegistrationPageTest" />
-        </classes>
-    </test>
+</test> <!-- Test -->
 </suite>

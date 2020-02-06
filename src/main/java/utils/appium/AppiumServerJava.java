@@ -3,21 +3,24 @@ package utils.appium;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
 import io.appium.java_client.service.local.AppiumServiceBuilder;
 import io.appium.java_client.service.local.flags.GeneralServerFlag;
+import utils.PropertyManager;
 
 import java.io.File;
 
 public final class AppiumServerJava {
     
     public static AppiumDriverLocalService startServer() {
-
+        final String url = PropertyManager.getInstance().get("appium.server.url");
+        final String appiumJsRunner = PropertyManager.getInstance().get("appium.server.js.path");
+        final String pathName = PropertyManager.getInstance().get("path.name");
+        final int appiumServerPort = 4723;
+        
         AppiumDriverLocalService service = AppiumDriverLocalService.buildService(
                 new AppiumServiceBuilder()
-                        .withIPAddress("127.0.0.1")
-                        .usingPort(4723)
-                        //for home
-                       //.withAppiumJS(new File("C:\\Program Files\\Appium\\resources\\app\\node_modules\\appium\\build\\lib\\main.js"))
-                        .withAppiumJS(new File("C:\\Users\\Volha.Saldatsenkava\\AppData\\Local\\Programs\\Appium\\resources\\app\\node_modules\\appium\\build\\lib\\main.js"))
-                        .usingDriverExecutable(new File("C:\\Program Files\\nodejs\\node.exe"))
+                        .withIPAddress(url)
+                        .usingPort(appiumServerPort)
+                        .withAppiumJS(new File(appiumJsRunner))
+                        .usingDriverExecutable(new File(pathName))
                         .withArgument(GeneralServerFlag.SESSION_OVERRIDE)
                         .withArgument(GeneralServerFlag.LOG_LEVEL, "error"));
         service.start();

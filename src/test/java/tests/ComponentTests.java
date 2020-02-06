@@ -1,9 +1,18 @@
 package tests;
 
 import io.qameta.allure.Description;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Optional;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 public class ComponentTests extends BaseTest {
-
+   
+    @Parameters(value={"deviceName", "platform"})
+    @BeforeClass
+    public void setupDeviceParameters (@Optional("Nexus5X") String deviceName, @Optional("Android") String platform) {
+        setCustomCapabilities(deviceName, platform);
+    }
+    
     @Test
     @Description("Check Native view")
     public void nativeViewTest() {
