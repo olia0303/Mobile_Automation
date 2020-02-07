@@ -20,7 +20,7 @@ public class SliderPage extends BasePage {
 
     @Override
     public void isPageOpened() {
-        isDisplayedElement(slider);
+       slider.isDisplayed();
     }
 
     public SliderPage openSlider() {
