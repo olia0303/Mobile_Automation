@@ -9,7 +9,7 @@ public class LoginPage extends BasePage{
     public MobileElement loginButton;
     @AndroidFindBy(className = "android.widget.ImageView")
     public MobileElement loginIcon;
-    @AndroidFindBy(xpath = "//*[@text='LOG IN']")
+    @AndroidFindBy(xpath = "//android.widget.ScrollView[@content-desc='scrollView']/android.view.ViewGroup")
     public MobileElement listView;
     
     public LoginPage(AppiumDriver<MobileElement> driver) {
