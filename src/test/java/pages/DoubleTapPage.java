@@ -3,7 +3,6 @@ package pages;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
-import org.openqa.selenium.By;
 import org.openqa.selenium.interactions.touch.TouchActions;
 
 import static org.hamcrest.CoreMatchers.equalTo;
@@ -12,30 +11,31 @@ import static org.hamcrest.MatcherAssert.assertThat;
 public class DoubleTapPage extends BasePage {
     @AndroidFindBy(id = "android:id/message")
     public MobileElement message;
+    @AndroidFindBy(xpath = "//*[@text='Double Tap']")
+    public MobileElement doubleTap;
+    @AndroidFindBy(xpath = "//*[@text='Double Tap Demo']")
+    public MobileElement doubleTapDemo;
+    @AndroidFindBy(xpath = "//*[@text='Double Tap Me']")
+    public MobileElement doubleTapMeButton;
     
-    private static final String DOUBLE_TAP_BY = "//*[@text='Double Tap']";
-    private static final String DOUBLE_TAP_DEMO_BY = "//*[@text='Double Tap Demo']";
-    private static final String DOUBLE_TAB_BUTTON_XPATH = "//*[@text='Double Tap Me']";
-            
     public DoubleTapPage(AppiumDriver<MobileElement> driver) {
         super(driver);
         initElements(this);
     }
 
     public DoubleTapPage openDoubleTap() {
-        driver.findElement(By.xpath(DOUBLE_TAP_BY)).click();
+        doubleTap.click();
         return this;
     }
     
     @Override
     public void isPageOpened() {
-        driver.findElement(By.xpath(DOUBLE_TAP_DEMO_BY)).isDisplayed();
+        doubleTapDemo.isDisplayed();
     }
     
     public DoubleTapPage doubleTapAction() {
-        MobileElement element = driver.findElement(By.xpath(DOUBLE_TAB_BUTTON_XPATH));
         TouchActions action = new TouchActions(driver);
-        action.doubleTap(element);
+        action.doubleTap(doubleTapMeButton);
         action.perform();
         return this;
     }

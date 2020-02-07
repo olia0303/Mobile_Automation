@@ -4,15 +4,14 @@ import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.pagefactory.AndroidFindBy;
-import org.openqa.selenium.By;
 
 import static io.appium.java_client.touch.offset.PointOption.point;
 
 public class SliderPage extends BasePage {
     @AndroidFindBy(id = "slider")
     public MobileElement slider;
-    
-    private static final String SLIDER_BY = "//*[@text='Slider']";
+    @AndroidFindBy(xpath = "//*[@text='Slider']")
+    public MobileElement textSlider;
     
     public SliderPage(AppiumDriver<MobileElement> driver) {
         super(driver);
@@ -25,8 +24,8 @@ public class SliderPage extends BasePage {
     }
 
     public SliderPage openSlider() {
-        driver.findElement(By.xpath(SLIDER_BY)).click();
-        return this;
+        textSlider.click();
+       return this;
     }
 
     public SliderPage moveSlider(double index) {

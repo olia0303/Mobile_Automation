@@ -49,8 +49,4 @@ abstract public class BasePage {
             return false;
         }
     }
-    
-    public void isDisplayedElement(MobileElement element) {
-        driver.findElementById(element.getId()).isDisplayed();
-    }
 }

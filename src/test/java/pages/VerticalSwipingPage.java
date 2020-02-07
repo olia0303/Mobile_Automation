@@ -4,15 +4,14 @@ import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.pagefactory.AndroidFindBy;
-import org.openqa.selenium.By;
 
 import static io.appium.java_client.touch.offset.PointOption.point;
 
 public class VerticalSwipingPage extends BasePage {
     @AndroidFindBy(id = "listview")
     public MobileElement listView;
-    
-    private static final String SWIPE_BY = "//*[@text='Vertical swiping']";
+    @AndroidFindBy(xpath = "//*[@text='Vertical swiping']")
+    public MobileElement swipe;
     
     public VerticalSwipingPage(AppiumDriver<MobileElement> driver) {
         super(driver);
@@ -21,11 +20,11 @@ public class VerticalSwipingPage extends BasePage {
 
     @Override
     public void isPageOpened() {
-        driver.findElement(By.xpath(SWIPE_BY)).isDisplayed();
+        swipe .isDisplayed();
     }
 
     public VerticalSwipingPage openVerticalSwiping() {
-        driver.findElement(By.xpath(SWIPE_BY)).click();
+        swipe.click();
         return this;
     }
     

@@ -3,7 +3,6 @@ package pages;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
-import org.openqa.selenium.By;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -15,9 +14,10 @@ public class NativeViewPage extends BasePage {
     public MobileElement itemViewTwo;
     @AndroidFindBy(id = "container3")
     public MobileElement itemViewThree;
-
-    private static final String NATIVE_VIEW_BY = "//*[@text='Native View']";
-    private static final String NATIVE_PAGE_BY = "//*[@text='Native View Demo']";
+    @AndroidFindBy(xpath = "//*[@text='Native View']")
+    public MobileElement nativeView;
+    @AndroidFindBy(xpath = "//*[@text='Native View Demo']")
+    public MobileElement nativePage;
 
     public NativeViewPage(AppiumDriver<MobileElement> driver) {
         super(driver);
@@ -26,11 +26,11 @@ public class NativeViewPage extends BasePage {
 
     @Override
     public void isPageOpened() {
-        driver.findElement(By.xpath(NATIVE_PAGE_BY)).isDisplayed();
+        nativePage.isDisplayed();
     }
 
     public NativeViewPage openNativeView() {
-        driver.findElement(By.xpath(NATIVE_VIEW_BY)).click();
+        nativeView.click();
         return this;
     }
 
