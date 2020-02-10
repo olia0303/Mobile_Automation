@@ -55,4 +55,15 @@ public class ComponentTests extends BaseTest {
         doubleTapPage.doubleTapAction()
                      .checkSuccessMessage();
     }
+
+    @Test
+    @Description("Drag and drop")
+    public void dragDropTest() {
+        loginPage.logInAsRegisteredUser()
+                .isListViewOpened();
+        dragDropPage.openDragDrop()
+                .isPageOpened();
+        dragDropPage.dragDropAction()
+                .checkSuccessMessage();
+    }
 }

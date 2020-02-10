@@ -44,6 +44,5 @@ public class DoubleTapPage extends BasePage {
         assertThat("Double tap successful!", waitForElementToAppear(message), equalTo(true));
         return this;
     }
-            
 }
 

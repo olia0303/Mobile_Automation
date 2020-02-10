@@ -20,6 +20,7 @@ public class BaseTest {
     SliderPage sliderPage;
     VerticalSwipingPage verticalSwipingPage;
     DoubleTapPage doubleTapPage;
+    DragDropPage dragDropPage;
 
     void setCustomCapabilities(String _deviceName, String _platform){
         deviceName = _deviceName;
@@ -36,6 +37,7 @@ public class BaseTest {
         sliderPage = new SliderPage(driver);
         verticalSwipingPage = new VerticalSwipingPage(driver);
         doubleTapPage = new DoubleTapPage(driver);
+        dragDropPage = new DragDropPage(driver);
     }
 
     @AfterClass
