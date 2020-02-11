@@ -2,8 +2,10 @@ package pages;
 
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
+import io.appium.java_client.TouchAction;
 import io.appium.java_client.pagefactory.AndroidFindBy;
-import org.openqa.selenium.interactions.touch.TouchActions;
+import io.appium.java_client.touch.TapOptions;
+import io.appium.java_client.touch.offset.ElementOption;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -34,9 +36,9 @@ public class DoubleTapPage extends BasePage {
     }
     
     public DoubleTapPage doubleTapAction() {
-        TouchActions action = new TouchActions(driver);
-        action.doubleTap(doubleTapMeButton);
-        action.perform();
+        TouchAction action = new TouchAction(driver);
+        action.tap(TapOptions.tapOptions().withElement(ElementOption.element(doubleTapMeButton))
+                .withTapsCount(2)).perform();
         return this;
     }
     

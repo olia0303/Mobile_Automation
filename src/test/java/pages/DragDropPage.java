@@ -2,8 +2,9 @@ package pages;
 
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
+import io.appium.java_client.TouchAction;
 import io.appium.java_client.pagefactory.AndroidFindBy;
-import org.openqa.selenium.interactions.touch.TouchActions;
+import io.appium.java_client.touch.offset.ElementOption;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -15,6 +16,8 @@ public class DragDropPage extends BasePage {
     public MobileElement dragDrop;
     @AndroidFindBy(xpath = "//*[@text='Drag me!']")
     public MobileElement dragMeButton;
+    @AndroidFindBy(xpath = "//*[@text='Drop here.']")
+    public MobileElement dropHere;
     
     public DragDropPage(AppiumDriver<MobileElement> driver) {
         super(driver);
@@ -32,12 +35,9 @@ public class DragDropPage extends BasePage {
     }
     
     public DragDropPage dragDropAction() {
-        TouchActions action = new TouchActions(driver);
-        action.longPress(dragDrop)
-                .moveToElement(dragMeButton)
-                .release()
-                .perform();
-        
+        TouchAction action = new TouchAction(driver);
+        action.longPress(ElementOption.element(dragMeButton)).moveTo(ElementOption.element(dropHere)).release().perform();
+         
         return this;
     }
     
