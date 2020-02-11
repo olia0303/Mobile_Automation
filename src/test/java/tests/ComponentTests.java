@@ -66,4 +66,15 @@ public class ComponentTests extends BaseTest {
         dragDropPage.dragDropAction()
                 .checkSuccessMessage();
     }
+
+    @Test
+    @Description("Long Press")
+    public void longPressTest() {
+        loginPage.logInAsRegisteredUser()
+                .isListViewOpened();
+        longPressPage.openLongPress()
+                .isPageOpened();
+        longPressPage.longPressAction()
+                .checkSuccessMessage();
+    }
 }
