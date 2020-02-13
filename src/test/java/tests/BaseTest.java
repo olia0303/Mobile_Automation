@@ -22,6 +22,7 @@ public class BaseTest {
     DoubleTapPage doubleTapPage;
     DragDropPage dragDropPage;
     LongPressPage longPressPage;
+    WheelPickerPage wheelPickerPage;
 
     void setCustomCapabilities(String _deviceName, String _platform){
         deviceName = _deviceName;
@@ -40,6 +41,7 @@ public class BaseTest {
         doubleTapPage = new DoubleTapPage(driver);
         dragDropPage = new DragDropPage(driver);
         longPressPage = new LongPressPage(driver);
+        wheelPickerPage = new WheelPickerPage(driver);
     }
 
     @AfterClass

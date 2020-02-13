@@ -77,4 +77,19 @@ public class ComponentTests extends BaseTest {
         longPressPage.longPressAction()
                 .checkSuccessMessage();
     }
+    
+    @Test
+    @Description("Wheel Picker")
+    public void wheelPickerTest() {
+        double indexStart = 0.5;
+        double indexY = 0.2;
+        loginPage.logInAsRegisteredUser()
+                .isListViewOpened()
+                .swipeScrollView(indexStart, indexY);
+        wheelPickerPage.openWheelPicker()
+                .isPageOpened();
+        wheelPickerPage.wheelPickerAction(3)
+                .currentColorShouldBeCorrect();
+        
+    }
 }
