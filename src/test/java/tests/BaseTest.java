@@ -23,6 +23,7 @@ public class BaseTest {
     DragDropPage dragDropPage;
     LongPressPage longPressPage;
     WheelPickerPage wheelPickerPage;
+    CarouselPage carouselPage;
 
     void setCustomCapabilities(String _deviceName, String _platform){
         deviceName = _deviceName;
@@ -42,6 +43,7 @@ public class BaseTest {
         dragDropPage = new DragDropPage(driver);
         longPressPage = new LongPressPage(driver);
         wheelPickerPage = new WheelPickerPage(driver);
+        carouselPage = new CarouselPage(driver);
     }
 
     @AfterClass

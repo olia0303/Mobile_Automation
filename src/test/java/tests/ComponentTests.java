@@ -90,6 +90,18 @@ public class ComponentTests extends BaseTest {
                 .isPageOpened();
         wheelPickerPage.wheelPickerAction(3)
                 .currentColorShouldBeCorrect();
-        
+    }
+    
+    @Test
+    @Description("Carousel - Swipe left/right")
+    public void carouselTest() {
+        double indexStart = 0.5;
+        double indexY = 0.2;
+        loginPage.logInAsRegisteredUser()
+                .isListViewOpened()
+                .swipeScrollView(indexStart, indexY);
+        carouselPage.openCarousel()
+                    .isPageOpened();
+        carouselPage.swipeRightScroll();
     }
 }
