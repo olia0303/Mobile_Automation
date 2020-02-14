@@ -14,7 +14,7 @@ public class WheelPickerPage extends BasePage {
     public MobileElement wheelPickerDemo;
     @AndroidFindBy(className = "android.widget.Spinner")
     public MobileElement spinner;
-    @AndroidFindBy(xpath = "//*[@text='Current Color: black']")
+    @AndroidFindBy(xpath = "//android.widget.TextView[contains(@text,'Color: black')]")
     public MobileElement currentColor;
     
     
