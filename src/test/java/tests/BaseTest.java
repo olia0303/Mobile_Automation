@@ -2,8 +2,8 @@ package tests;
 
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 import pages.*;
 import utils.appium.AppiumServerJava;
 import utils.driver.AndroidDriverManager;
@@ -30,7 +30,7 @@ public class BaseTest {
         platform = _platform;
     }
     
-    @BeforeClass
+    @BeforeMethod
     void startAppiumServer() {
         appiumService = AppiumServerJava.startServer();
         DriverManager manager = new AndroidDriverManager();
@@ -46,7 +46,7 @@ public class BaseTest {
         carouselPage = new CarouselPage(driver);
     }
 
-    @AfterClass
+    @AfterMethod
     void stopAppiumServer() {
         driver.quit();
         appiumService.stop();
