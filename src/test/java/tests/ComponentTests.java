@@ -9,7 +9,7 @@ public class ComponentTests extends BaseTest {
    
     @Parameters(value={"deviceName", "platform"})
     @BeforeClass
-    public void setupDeviceParameters (@Optional("iPhone 12 Pro Max") String deviceName, @Optional("iOS") String platform) {
+    public void setupDeviceParameters (@Optional("iPhone 8") String deviceName, @Optional("iOS") String platform) {
         setCustomCapabilities(deviceName, platform);
     }
 
@@ -56,5 +56,12 @@ public class ComponentTests extends BaseTest {
     public void checkCalendarAuthorizedTest() {
         testPage.isPageOpened();
         testPage.checkCalendarAuth();
+    }
+
+    @Test
+    @Description("Check text")
+    public void checkTextTest() {
+        testPage.isPageOpened();
+        testPage.checkText();
     }
 }

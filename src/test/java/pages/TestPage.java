@@ -4,8 +4,6 @@ import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
-import sun.jvm.hotspot.debugger.cdbg.TemplateType;
-
 import static io.appium.java_client.touch.offset.PointOption.point;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -105,7 +103,7 @@ public class TestPage extends BasePage{
     }
 
     public TestPage checkText() {
-        assertThat(text.getText(), equalTo("A test label"));
+        assertThat("A test label", waitForElementToAppear(text), equalTo(true));
         return this;
     }
 }
