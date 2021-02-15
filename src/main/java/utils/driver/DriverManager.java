@@ -18,9 +18,9 @@ public abstract class DriverManager {
         if (null == driver) {
             cap.setCapability(MobileCapabilityType.PLATFORM_NAME, platform);
             cap.setCapability(MobileCapabilityType.DEVICE_NAME, deviceName);
-            cap.setCapability("appActivity",PropertyManager.getInstance().get("application.activity.name"));
-            cap.setCapability("appPackage", PropertyManager.getInstance().get("application.package.name"));
-            cap.setCapability("avd", deviceName);
+            cap.setCapability(MobileCapabilityType.AUTOMATION_NAME, "XCUITest");
+            cap.setCapability("app",PropertyManager.getInstance().get("app"));
+            cap.setCapability("deviceName", deviceName);
             driver = createDriver(service);
         }
         return driver;

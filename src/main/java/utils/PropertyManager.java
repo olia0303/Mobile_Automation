@@ -16,7 +16,7 @@ public class PropertyManager {
     private static Properties prop;
 
     public static PropertyManager getInstance () {
-        propertyFilePath = System.getProperty("user.dir") + "\\src\\main\\resources\\application.properties";
+        propertyFilePath = System.getProperty("user.dir") + "/src/main/resources/application.properties";
         log.debug(String.format("Reading properties from %s", propertyFilePath));
         if (instance == null) {
             synchronized (lock) {

@@ -9,99 +9,52 @@ public class ComponentTests extends BaseTest {
    
     @Parameters(value={"deviceName", "platform"})
     @BeforeClass
-    public void setupDeviceParameters (@Optional("Nexus5X") String deviceName, @Optional("Android") String platform) {
+    public void setupDeviceParameters (@Optional("iPhone 12 Pro Max") String deviceName, @Optional("iOS") String platform) {
         setCustomCapabilities(deviceName, platform);
     }
-    
+
     @Test
-    @Description("Check Native view")
-    public void nativeViewTest() {
-        loginPage.logInAsRegisteredUser()
-                 .isListViewOpened();
-        nativeViewPage.openNativeView()
-                      .isPageOpened();
-        nativeViewPage.listNativeViewShouldBeLoaded();
+    @Description("Write text")
+    public void writeTextTest() {
+        testPage.isPageOpened();
+        testPage.checkSum("2");
     }
 
     @Test
-    @Description("Slide your number")
+    @Description("Show alert")
+    public void showAlertTest() {
+        testPage.isPageOpened();
+        testPage.checkAlert();
+    }
+
+    @Test
+    @Description("Slider")
     public void sliderTest() {
-        loginPage.logInAsRegisteredUser()
-                 .isListViewOpened(); 
-        double index = 0.5;
-        sliderPage.openSlider()
-                  .isPageOpened();
-        sliderPage.moveSlider(index);
-    }
-    
-    @Test
-    @Description("Vertical Swiping")
-    public void swipeTest() {
-        loginPage.logInAsRegisteredUser()
-                 .isListViewOpened();
-        double indexStart = 0.5;
-        double indexY = 0.2;
-        verticalSwipingPage.openVerticalSwiping()
-                           .swipeScrollView(indexStart, indexY);
-    } 
-    
-    @Test
-    @Description("Double tap")
-    public void doubleTapTest() {
-        loginPage.logInAsRegisteredUser()
-                .isListViewOpened();
-        doubleTapPage.openDoubleTap()
-                     .isPageOpened();
-        doubleTapPage.doubleTapAction()
-                     .checkSuccessMessage();
+        testPage.isPageOpened();
+        testPage.swipeRightScroll();
     }
 
     @Test
-    @Description("Drag and drop")
-    public void dragDropTest() {
-        loginPage.logInAsRegisteredUser()
-                .isListViewOpened();
-        dragDropPage.openDragDrop()
-                .isPageOpened();
-        dragDropPage.dragDropAction()
-                .checkSuccessMessage();
+    @Description("Disabled button")
+    public void disabledButtonTest() {
+        testPage.isPageOpened();
+        testPage.checkLocation();
     }
 
     @Test
-    @Description("Long Press")
-    public void longPressTest() {
-        loginPage.logInAsRegisteredUser()
-                .isListViewOpened();
-        longPressPage.openLongPress()
-                .isPageOpened();
-        longPressPage.longPressAction()
-                .checkSuccessMessage();
-    }
-    
-    @Test
-    @Description("Wheel Picker")
-    public void wheelPickerTest() {
+    @Description("Test Gesture")
+    public void gestureTest() {
+        testPage.isPageOpened();
         double indexStart = 0.5;
         double indexY = 0.2;
-        loginPage.logInAsRegisteredUser()
-                .isListViewOpened()
+        testPage.checkTestGesture()
                 .swipeScrollView(indexStart, indexY);
-        wheelPickerPage.openWheelPicker()
-                .isPageOpened();
-        wheelPickerPage.wheelPickerAction(3)
-                .currentColorShouldBeCorrect();
     }
-    
+
     @Test
-    @Description("Carousel - Swipe left/right")
-    public void carouselTest() {
-        double indexStart = 0.5;
-        double indexY = 0.2;
-        loginPage.logInAsRegisteredUser()
-                .isListViewOpened()
-                .swipeScrollView(indexStart, indexY);
-        carouselPage.openCarousel()
-                    .isPageOpened();
-        carouselPage.swipeRightScroll();
+    @Description("Check Calendar")
+    public void checkCalendarAuthorizedTest() {
+        testPage.isPageOpened();
+        testPage.checkCalendarAuth();
     }
 }
