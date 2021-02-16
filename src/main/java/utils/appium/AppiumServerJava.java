@@ -12,7 +12,6 @@ public final class AppiumServerJava {
     public static AppiumDriverLocalService startServer() {
         final String url = PropertyManager.getInstance().get("appium.server.url");
         final String appiumJsRunner = PropertyManager.getInstance().get("appium.server.js.path");
-        final String pathName = PropertyManager.getInstance().get("path.name");
         final int appiumServerPort = 4723;
         
         AppiumDriverLocalService service = AppiumDriverLocalService.buildService(
@@ -20,7 +19,6 @@ public final class AppiumServerJava {
                         .withIPAddress(url)
                         .usingPort(appiumServerPort)
                         .withAppiumJS(new File(appiumJsRunner))
-                        .usingDriverExecutable(new File(pathName))
                         .withArgument(GeneralServerFlag.SESSION_OVERRIDE)
                         .withArgument(GeneralServerFlag.LOG_LEVEL, "error"));
         service.start();

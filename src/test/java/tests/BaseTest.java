@@ -6,24 +6,16 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import pages.*;
 import utils.appium.AppiumServerJava;
-import utils.driver.AndroidDriverManager;
+import utils.driver.IOSDriverManager;
 import utils.driver.DriverManager;
 
 public class BaseTest {
-    private String deviceName = "Nexus5X";
-    private String platform = "Android";
+    private String deviceName = "iPhone 12 Pro Max";
+    private String platform = "iOS";
     
     AppiumDriverLocalService appiumService;
     AppiumDriver driver;
-    LoginPage loginPage;
-    NativeViewPage nativeViewPage;
-    SliderPage sliderPage;
-    VerticalSwipingPage verticalSwipingPage;
-    DoubleTapPage doubleTapPage;
-    DragDropPage dragDropPage;
-    LongPressPage longPressPage;
-    WheelPickerPage wheelPickerPage;
-    CarouselPage carouselPage;
+    TestPage testPage;
 
     void setCustomCapabilities(String _deviceName, String _platform){
         deviceName = _deviceName;
@@ -33,17 +25,9 @@ public class BaseTest {
     @BeforeMethod
     void startAppiumServer() {
         appiumService = AppiumServerJava.startServer();
-        DriverManager manager = new AndroidDriverManager();
+        DriverManager manager = new IOSDriverManager();
         driver = manager.getDriver(appiumService, deviceName, platform);
-        loginPage = new LoginPage(driver);
-        nativeViewPage = new NativeViewPage(driver);
-        sliderPage = new SliderPage(driver);
-        verticalSwipingPage = new VerticalSwipingPage(driver);
-        doubleTapPage = new DoubleTapPage(driver);
-        dragDropPage = new DragDropPage(driver);
-        longPressPage = new LongPressPage(driver);
-        wheelPickerPage = new WheelPickerPage(driver);
-        carouselPage = new CarouselPage(driver);
+        testPage = new TestPage(driver);
     }
 
     @AfterMethod
